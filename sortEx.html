@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<script>
+    /*정렬은 문자열, 숫자열 구분X*/
+    /*정렬하는 기준은 함수를 만들어준다고 생각하면 편하다*/
+    var arr = [32,547,2,54,3,22,11];
+
+ arr.sort(function (a,b) {
+     return a-b;
+ });
+
+/*람다식 sort, 그러나 익스플로러에서는 안먹히니까 위에 코드 사용*/
+/*arr.sort((a, b) => a- b);
+    console.log(arr);*/
+
+</script>
+</body>
+</html>

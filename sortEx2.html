@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+
+    var current = {
+        lat: 37.570462,
+        lng: 126.985099
+    }
+
+    var arr = [
+        {title: "북", lat: 37.579543, lng: 126.985437},
+        {title: "남", lat: 37.568110, lng: 126.985276},
+        {title: "서", lat: 37.570453, lng: 126.976926},
+        {title: "동", lat: 37.570383, lng: 126.986421},
+
+
+    ];
+
+    /*거리 공식을 함수로 만들어줌*/
+    function calcDistance(p1, p2) {
+        return Math.sqrt(Math.pow(p1.lat - p2.lat,2) +
+            Math.pow(p1.lng - p2.lng,2)
+        );
+    }
+
+    /*현재 내 위치와 거리를 정렬*/
+    arr.sort(function (a, b) {
+        var d1 = calcDistance(current, a) * 100000000;
+        var d2 = calcDistance(current, b) * 100000000;
+        return d1 - d2;
+    })
+
+    console.log(arr)
+
+</script>
+</body>
+</html>

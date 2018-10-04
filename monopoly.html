@@ -1,0 +1,460 @@
+<head>
+    <meta charset="utf-8">
+    <title>모노폴리(ver.Korea)</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.css">
+    <link rel="stylesheet" type="text/css" media="screen" href="style.css"/>
+</head>
+<body>
+
+<style>
+    div {
+        box-sizing: border-box;
+        text-transform: uppercase;
+    }
+
+    .responsive {
+        background: #cde6d0;
+        width: 80vw;
+        height: 80vw;
+        margin: 10px auto;
+    }
+
+    .mainSquare {
+        height: 100%;
+        outline: 1px dashed #c2dec5;
+        outline-offset: -13px;
+    }
+
+    .row {
+        width: 100%;
+        display: flex;
+    }
+
+    .top {
+        height: 15.384615385%;
+    }
+
+    .center {
+        height: 69.23076923%;
+    }
+
+    .square1 {
+        outline: 1px solid black;
+        flex-grow: 1;
+        position: relative;
+    }
+
+    .square2 {
+        flex-grow: 2;
+        outline: 1px solid black;
+        display: flex;
+        flex-direction: column;
+        position: relative;
+    }
+
+    #map {
+        flex-grow: 9;
+        display: flex;
+        outline: 1px solid black;
+    }
+
+    .squareSide {
+        outline: 1px solid black;
+        width: 100%;
+        flex-grow: 1;
+        position: relative;
+    }
+
+    .header {
+        height: 21%;
+        position: absolute;
+        outline: 2px solid black;
+        background: grey;
+        /* width: 100%; */
+    }
+
+    .headerSide {
+        /* height: 100%; */
+        width: 21%;
+        position: absolute;
+        outline: 2px solid black;
+    }
+
+    .header-top {
+        bottom: 1px;
+        left: 1px;
+        right: 1px;
+    }
+
+    .header-bottom {
+        top: 1px;
+        left: 1px;
+        right: 1px;
+    }
+
+    .header-left {
+        top: 1px;
+        bottom: 1px;
+        right: 1px;
+        background: grey;
+    }
+
+    .header-right {
+        top: 1px;
+        bottom: 1px;
+        left: 1px;
+        background: grey;
+    }
+
+    .firstLine {
+        position: absolute;
+        font-size: 0.7vw;
+        font-weight: 500;
+        line-height: 1vw;
+        text-align: center;
+    }
+
+    .firstLine-top {
+        left: 1px;
+        right: 1px;
+        bottom: 30%;
+        height: 10%;
+    }
+
+    .firstLine-top.no-color {
+        bottom: 12%;
+    }
+
+    .firstLine-left {
+        top: 0px;
+        bottom: 0px;
+        right: 42%;
+    }
+
+    .firstLine-left.no-color {
+        right: 23%;
+    }
+
+    .firstLine-right {
+        top: 0;
+        bottom: 0;
+        left: 42%;
+    }
+
+    .firstLine-right.no-color {
+        left: 23%;
+    }
+
+    .firstLine-bottom {
+        left: 0;
+        right: 0;
+        top: 30%;
+    }
+
+    .firstLine-bottom.no-color {
+        top: 12%;
+    }
+
+    .red {
+        background-color: #ed1b24;
+    }
+
+    .yellow {
+        background-color: #fef200;
+    }
+
+    .lightblue {
+        background-color: #aae0fa;
+    }
+
+    .brown {
+        background-color: #955436;
+    }
+
+    .blue {
+        background-color: #0072bb;
+    }
+
+    .green {
+        background-color: #1fb25a;
+    }
+
+    .orange {
+        background-color: #f7941d;
+    }
+
+    .purple {
+        background-color: #d93a96;
+    }
+
+    .rotation1 {
+        transform: rotate(90deg);
+    }
+
+    .rotation2 {
+        transform: rotate(180deg);
+    }
+
+    .rotation3 {
+        transform: rotate(-90deg);
+    }
+
+    .corner {
+        position: absolute;
+        text-align: center;
+        line-height: 8vw;
+        font-size: 1.2vw;
+        font-weight: 500;
+    }
+
+    .corner1 {
+        transform: rotateZ(135deg) translateX(-66%) translateY(-15%);
+    }
+
+    .corner2 {
+        transform: rotateZ(-135deg) translateX(-30%) translateY(23%);
+        line-height: 9vw;
+    }
+
+    .corner3 {
+        transform: rotateZ(-45deg) translateX(-14%) translateY(26%);
+        line-height: 1.4vw;
+        font-size: 1vw;
+    }
+
+    .corner4 {
+        transform: rotateZ(45deg) translateX(-9%) translateY(-31%);
+        line-height: 7vw;
+    }
+
+    .squareCorner {
+        height: 65%;
+        width: 65%;
+        border: 2px solid black;
+        right: -1px;
+        top: -1px;
+        position: absolute;
+    }
+
+    .corner4-left {
+        position: absolute;
+        transform: rotateZ(90deg) translateX(80%) translateY(-36%);
+        font-size: 1.2vw;
+        font-weight: 500;
+    }
+
+    .corner4-bottom {
+        position: absolute;
+        transform: translateX(112%) translateY(720%);
+        font-size: 1.2vw;
+        font-weight: 500;
+    }
+</style>
+
+<div class="responsive">
+
+    <div class="mainSquare">
+
+        <div class="row top">
+            <div class="square2"><span class="corner corner1">주사위<br/>한번 더!</span></div>
+            <div class="square1" onclick="clickButton(event)">
+                <div class="header header-top red"></div>
+                <div class="firstLine firstLine-top rotation2">전주</div>
+            </div>
+            <div class="square1" onclick="clickButton(event)">
+                <div class="header header-top red"></div>
+                <div class="firstLine firstLine-top rotation2">청주</div>
+            </div>
+            <div class="square1" onclick="clickButton(event)">
+                <div class="header header-top red"></div>
+                <div class="firstLine firstLine-top rotation2">대전</div>
+            </div>
+            <div class="square1" onclick="clickButton(event)">
+                <div class="header header-top yellow"></div>
+                <div class="firstLine firstLine-top rotation2">용인</div>
+            </div>
+            <div class="square1" onclick="clickButton(event)">
+                <div class="header header-top yellow"></div>
+                <div class="firstLine firstLine-top rotation2">가평</div>
+            </div>
+            <div class="square1" onclick="clickButton(event)">
+                <div class="header header-top yellow"></div>
+                <div class="firstLine firstLine-top rotation2">춘천</div>
+            </div>
+            <div class="square2"><span class="corner corner2">감옥으로<br/>GOGO!~</span></div>
+        </div>
+
+        <div class="row center">
+            <div class="square2">
+                <div class="squareSide" onclick="clickButton(event)">
+                    <div class="headerSide header-left orange"></div>
+                    <div class="firstLine firstLine-left rotation1"><br/><br/>속초</div>
+                </div>
+                <div class="squareSide" onclick="clickButton(event)">
+                    <div class="headerSide header-left orange"></div>
+                    <div class="firstLine firstLine-left rotation1"><br/><br/>강릉</div>
+                </div>
+                <div class="squareSide" onclick="clickButton(event)">
+                    <div class="headerSide header-left orange"></div>
+                    <div class="firstLine firstLine-left rotation1"><br/><br/>삼척</div>
+                </div>
+                <div class="squareSide" onclick="clickButton(event)">
+                    <div class="headerSide header-left purple"></div>
+                    <div class="firstLine firstLine-left rotation1"><br/><br/>강릉</div>
+                </div>
+                <div class="squareSide" onclick="clickButton(event)">
+                    <div class="headerSide header-left purple"></div>
+                    <div class="firstLine firstLine-left rotation1"><br/><br/>동해</div>
+                </div>
+                <div class="squareSide" onclick="clickButton(event)">
+                    <div class="headerSide header-left purple"></div>
+                    <div class="firstLine firstLine-left rotation1"><br/><br/>태백</div>
+                </div>
+            </div>
+            <div id="map" style="height:100%;" align="center"></div>
+
+
+
+            <div class="square2">
+                <div class="squareSide" onclick="clickButton(event)">
+                    <div class="headerSide header-right green"></div>
+                    <div class="firstLine firstLine-right rotation3"><br/><br/>울진</div>
+                </div>
+                <div class="squareSide" onclick="clickButton(event)">
+                    <div class="headerSide header-right green"></div>
+                    <div class="firstLine firstLine-right rotation3"><br/><br/>포항</div>
+                </div>
+                <div class="squareSide" onclick="clickButton(event)">
+                    <div class="headerSide header-right green"></div>
+                    <div class="firstLine firstLine-right rotation3"><br/><br/>울산</div>
+                </div>
+                <div class="squareSide" onclick="clickButton(event)">
+                    <div class="headerSide header-right blue"></div>
+                    <div class="firstLine firstLine-right rotation3"><br/><br/>제주도</div>
+                </div>
+                <div class="squareSide" onclick="clickButton(event)">
+                    <div class="headerSide header-right blue"></div>
+                    <div class="firstLine firstLine-right rotation3"><br/><br/>서울</div>
+                </div>
+                <div class="squareSide" onclick="clickButton(event)">
+                    <div class="headerSide header-right blue"></div>
+                    <div class="firstLine firstLine-right rotation3"><br/><br/>부산</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row top">
+            <div class="square2">
+                <span class="corner4-left">보석금</span>
+                <div class="squareCorner">
+                    <span class="corner corner4">감<br/>옥</span>
+                </div>
+                <span class="corner4-bottom">500만원</span>
+            </div>
+            <div class="square1" onclick="clickButton(event)">
+                <div class="header header-bottom lightblue"></div>
+                <div class="firstLine firstLine-bottom">구례</div>
+            </div>
+            <div class="square1" onclick="clickButton(event)">
+                <div class="header header-bottom lightblue"></div>
+                <div class="firstLine firstLine-bottom">순천</div>
+            </div>
+            <div class="square1" onclick="clickButton(event)">
+                <div class="header header-bottom lightblue"></div>
+                <div class="firstLine firstLine-bottom">하동</div>
+            </div>
+            <div class="square1" onclick="clickButton(event)">
+                <div class="header header-bottom brown"></div>
+                <div class="firstLine firstLine-bottom">고성</div>
+            </div>
+            <div class="square1" onclick="clickButton(event)">
+                <div class="header header-bottom brown"></div>
+                <div class="firstLine firstLine-bottom">통영</div>
+            </div>
+            <div class="square1" onclick="clickButton(event)">
+                <div class="header header-bottom brown"></div>
+                <div class="firstLine firstLine-bottom">거제</div>
+            </div>
+            <div class="square2">
+                <span class="corner corner3">게임을<br/>시작하지<br/>START!</span>
+            </div>
+        </div>
+
+    </div>
+
+</div>
+
+<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=3cfaa90d75acc0d5832172ba581c674a"></script>
+
+
+<script>
+
+    var mapContainer = document.getElementById('map'), // 지도를 표시할 div
+        mapOption = {
+            center: new daum.maps.LatLng(37.041672, 127.745859), // 지도의 중심좌표
+            level: 13// 지도의 확대 레벨
+        };
+
+    // 지도를 표시할 div와  지도 옵션으로  지도를 생성합니다
+    var map = new daum.maps.Map(mapContainer, mapOption);
+
+    var arr = [
+        {title: "거제", lat: 34.880581, lng: 128.621181},
+        {title: "통영", lat: 34.854490, lng: 128.433224},
+        {title: "고성", lat: 34.973066, lng: 128.322236},
+        {title: "하동", lat: 35.067219, lng: 127.751236},
+        {title: "순천", lat: 34.950689, lng: 127.487324},
+        {title: "구례", lat: 35.202513, lng: 127.462814},
+        {title: "태백", lat: 37.164095, lng: 128.985724},
+        {title: "동해", lat: 37.524734, lng: 129.114302},
+        {title: "강릉", lat: 37.751869, lng: 128.876070},
+        {title: "삼척", lat: 37.452153, lng: 129.164793},
+        {title: "양양", lat: 37.569440, lng: 126.987367},
+        {title: "속초", lat: 38.207068, lng: 128.591862},
+        {title: "전주", lat: 35.824237, lng: 127.148001},
+        {title: "청주", lat: 36.642121, lng: 127.488833},
+        {title: "대전", lat: 36.350500, lng: 127.384819},
+        {title: "용인", lat: 37.241105, lng: 127.177932},
+        {title: "가평", lat: 37.831383, lng: 127.509525},
+        {title: "춘천", lat: 37.881266, lng: 127.730066},
+        {title: "울진", lat: 36.993118, lng: 129.400586},
+        {title: "포항", lat: 36.019091, lng: 129.343626},
+        {title: "울산", lat: 35.539657, lng: 129.311506},
+        {title: '제주도', lat: 33.499599, lng: 126.531228},
+        {title: '서울', lat: 37.566619, lng: 126.978395},
+        {title: '부산', lat: 35.179774, lng: 129.075041},
+    ];
+
+    function clickButton(event) {
+
+        var title = event.target.innerText.trim();              //뭘 클릭했는지?
+        console.log("title: " + title);
+
+
+        var targetCity = arr.find((item) => {
+            return item.title === title;
+        });
+
+        var lat = targetCity.lat;
+        var lng = targetCity.lng;
+
+        var mapContainer = document.getElementById('map'), // 지도를 표시할 div
+            mapOption = {
+                center: new daum.maps.LatLng(lat, lng), // 지도의 중심좌표
+                level: 6 // 지도의 확대 레벨
+            };
+
+        var map = new daum.maps.Map(mapContainer, mapOption); // 지도를 생성합니다
+
+        var markerPosition = new daum.maps.LatLng(lat, lng);
+
+        var marker = new daum.maps.Marker({
+            position: markerPosition
+        });
+
+        marker.setMap(map);
+    }
+
+</script>
+
+</body>
